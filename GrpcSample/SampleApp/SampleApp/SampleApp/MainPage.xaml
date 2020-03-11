@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SampleApp.MainPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"             
+             ios:Page.UseSafeArea="true">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Text="目标IP:"></Label>
+            <Entry Grid.Column="1" Grid.Row="0" x:Name="IpInput" Text="192.168.1.X:54321"></Entry>
+            <Button Grid.Column="2" Grid.Row="0" x:Name="ConnectBtn" Clicked="ConnectBtn_Clicked" Text="连接"></Button>
+            <Label Grid.Column="0" Grid.Row="1" Text="发送文字:"></Label>
+            <Entry Grid.Column="1" Grid.Row="1" x:Name="MsgInput"></Entry>
+            <Button Grid.Column="2" Grid.Row="1" Text="Send" x:Name="SendBtn" Clicked="SendBtn_Clicked"></Button>
+        </Grid>
+        <CollectionView ItemsUpdatingScrollMode="KeepLastItemInView" Grid.Row="1" ItemsSource="{Binding MsgList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Msg}"></Label>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
